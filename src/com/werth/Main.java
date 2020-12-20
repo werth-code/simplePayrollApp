@@ -1,15 +1,11 @@
 package com.werth;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        //Create a container for employees
-        Employees werthPhotoEmployees = new Employees();
 
         //Create the business and it's employees
         Employer werthPhotography = new Employer("Werth Photography", 25000.00);
@@ -17,30 +13,26 @@ public class Main {
         Employee laurieWerth = new Employee("Laurie", "Werth", 50000.00);
         Employee michelleMcCool = new Employee("Michelle", "McCool", 25000.00);
 
-        //Add the employees to our containe werthPhotoEmployees
-        werthPhotoEmployees.addEmployee(mattWerth);
-        werthPhotoEmployees.addEmployee(laurieWerth);
-        werthPhotoEmployees.addEmployee(michelleMcCool);
+        //Add the employees to our container werthPhotoEmployees
+        werthPhotography.getEmployees().addEmployee(mattWerth);
+        werthPhotography.getEmployees().addEmployee(laurieWerth);
+        werthPhotography.getEmployees().addEmployee(michelleMcCool);
 
-        //Get the container and start a stream
-        List<Double> employeeSalaries =  werthPhotoEmployees.getEmployeesList().stream()
-                .map(Employee::getYearlySalary) // This should transform our Object to an Integer..
-                .collect(Collectors.toList());
+        werthPhotography.payEmployeeWeekly();
 
-        System.out.println(werthPhotography.getTotalBusinessFunds());
+        Map<String, Double> salaryMap = werthPhotography.getEmployees().employeesList.stream()
+                .collect(Collectors.toMap(
+                        Employee::getFirstName,
+                        Employee::getYearlySalary
+                ));
 
-        employeeSalaries.forEach(ele -> System.out.println("Yearly Salary$ " + ele));
+        Map<String, Double> moneyInAccount = werthPhotography.getEmployees().employeesList.stream()
+                .collect(Collectors.toMap(
+                        Employee::getFirstName,
+                        Employee::getTotalFunds
+                ));
 
-        werthPhotoEmployees.getEmployeesList().stream()
-                .forEach(employee -> Pay.payEmployeeWeekly(employee, werthPhotography));
-
-
-        List<Double> employeeFunds = werthPhotoEmployees.getEmployeesList().stream()
-                .map(Employee::getTotalFunds)
-                .collect(Collectors.toList());
-
-        employeeFunds.forEach(ele -> System.out.println("Funds Available$ " + ele));
-
-        System.out.println(werthPhotography.getTotalBusinessFunds());
+        System.out.println(salaryMap);
+        System.out.println(moneyInAccount);
     }
 }

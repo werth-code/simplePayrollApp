@@ -21,4 +21,12 @@ public class Employees {
     public void addEmployee(Employee employee) {
         this.getEmployeesList().add(employee);
     }
+
+    public int size() {
+        return employeesList.size();
+    }
+
+    public Object get(int i) {
+        return employeesList.get(i);
+    }
 }

@@ -55,4 +55,16 @@ public class Employee {
     public void setTotalFunds(Double totalFunds) {
         this.totalFunds = totalFunds;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", yearlySalary=" + yearlySalary +
+                ", totalFunds=" + totalFunds +
+                ", performance=" + performance +
+                ", fundsPaid=" + fundsPaid +
+                '}';
+    }
 }
