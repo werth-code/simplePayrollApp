@@ -17,7 +17,7 @@ public class Main {
         Employee laurieWerth = new Employee("Laurie", "Werth", 50000.00);
         Employee michelleMcCool = new Employee("Michelle", "McCool", 25000.00);
 
-        //Add the employees to our containe werthPhotoEmployees
+        //Add the employees to our container werthPhotoEmployees
         werthPhotoEmployees.addEmployee(mattWerth);
         werthPhotoEmployees.addEmployee(laurieWerth);
         werthPhotoEmployees.addEmployee(michelleMcCool);
@@ -31,8 +31,10 @@ public class Main {
 
         employeeSalaries.forEach(ele -> System.out.println("Yearly Salary$ " + ele));
 
+
+        //// TODO: 12/20/20 I need the employer to be passed in automatically. So You could call from the employer, but not pass it in.
         werthPhotoEmployees.getEmployeesList().stream()
-                .forEach(employee -> Pay.payEmployeeWeekly(employee, werthPhotography));
+                .forEach(employee -> werthPhotography.payEmployeeWeekly(employee));
 
 
         List<Double> employeeFunds = werthPhotoEmployees.getEmployeesList().stream()
