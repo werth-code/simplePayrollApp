@@ -31,8 +31,6 @@ public class Main {
 
         employeeSalaries.forEach(ele -> System.out.println("Yearly Salary$ " + ele));
 
-
-        //// TODO: 12/20/20 I need the employer to be passed in automatically. So You could call from the employer, but not pass it in.
         werthPhotoEmployees.getEmployeesList().stream()
                 .forEach(employee -> werthPhotography.payEmployeeWeekly(employee));
 
