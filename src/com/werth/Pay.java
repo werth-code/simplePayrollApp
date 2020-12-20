@@ -2,6 +2,6 @@ package com.werth;
 
 public interface Pay {
 
-    public void payEmployeeWeekly(Employee employee);
+    public void payEmployeeWeekly();
 
 }

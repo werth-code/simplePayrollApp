@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class EmployerTest {
     Employer employer = new Employer("Johnnny's Hot Dogs", 10000.00);
+    Employees employees = new Employees();
     Employee employee = new Employee("Mike", "McCloud", 10000.00);
 
     @Test
@@ -33,7 +34,8 @@ class EmployerTest {
 
     @Test
     void payEmployeeWeekly() {
-        employer.payEmployeeWeekly(employee);
+        employees.addEmployee(employee);
+        employer.payEmployeeWeekly();
 
         Double actual = employer.getTotalBusinessFunds();
         Double expected = 9807.692307692309;
